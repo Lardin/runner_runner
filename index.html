@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+</head>
+<body>
+    <script>
+    var game;
+    var gameOptions = {
+        platformStartSpeed: 350,
+        spawnRange: [100, 350],
+        platformSizeRange: [50, 250],
+        playerGravity: 900,
+        jumpForce: 400,
+        playerStartPosition: 200,
+        jumps: 2
+    }
+    window.onload = function () {
+        var config = {
+            type: Phaser.AUTO,
+            width: 1334,
+            height: 750,
+            scene: playGame,
+            backgroundColor: 0x444444,
+    
+            // physics settings
+            physics: {  
+                default: "arcade"
+            }
+        }
+        game = new Phaser.Game(config);
+        window.focus();
+    }
+
+    class playGame extends Phaser.scene {
+        constructor(){
+            super("PlayGame");
+        }
+        preload(){
+            this.load.image("platform", "platform.png");
+            this.load.image("player", "player.png");
+        }
+    }
+    </script>
+
+</body>
+</html>
